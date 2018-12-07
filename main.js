@@ -1,14 +1,11 @@
-// Create elements of the page
-
-// alert("Would you like to fight or flee from the dragon?")
 var dragon = document.getElementById("dragonPic");
-dragon.innerHTML = `
-    <img src="images/dragon.png">
-`;
+dragon.innerHTML = '<img src="images/dragon.png">';
 
 var dicePic1 = document.getElementById("dice1");
 var dicePic2 = document.getElementById("dice2");
 
+var fightButton = document.getElementById("fight");
+var fleeButton = document.getElementById("flee");
 
 var instructions = document.getElementById("instructions");
 instructions.innerHTML = `
@@ -16,13 +13,25 @@ instructions.innerHTML = `
     <p>If you decide to flee, you will suffer the consequences! </p>
 `;
 
-// variable for random number between 1 and 6
+function fight(){
+    var randomNumber1 = Math.ceil(Math.random(2,6) * 6);
+    var randomNumber2 = Math.ceil(Math.random(2,6) * 6);
+    var score = randomNumber1 + randomNumber2
+    dicePic1.innerHTML = `<img src="images/d${randomNumber1}.gif">`;
+    dicePic2.innerHTML = `<img src="images/d${randomNumber2}.gif">`;
+    if (score >= 9) {
+        dragon.innerHTML = '<img src="images/slainDragon.jpg">';
+        instructions.innerHTML = "You've won and the dragon is now your throne!!!"
+    } else {
+        dragon.innerHTML = '<img src="images/fireDragon.jpg">';
+        instructions.innerHTML = "You've lost and you are now burnt to a crisp!!!"
+    }
+};
 
-var randomNumber = Math.ceil(Math.random(2,6) * 6);
+function flee(){
+    dragon.innerHTML = '<img src="images/flee.jpg">';
+    instructions.innerHTML = "Oh....you ran away????? NEEERDDDDDD!!!";
+};
 
-
-// function to generate random dice image
-
-function randomDiceImage(){
-    dicePic1.innerHTML
-}
+fightButton.addEventListener("click",fight);
+fleeButton.addEventListener("click",flee);
