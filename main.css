@@ -1,5 +1,7 @@
 body {
     text-align: center;
+    font-family: 'Secular One', sans-serif;
+    background-color: lightgrey;
 }
 
 #dragonPic img{
@@ -7,8 +9,22 @@ body {
     width: 400px;
 }
 
+#instructions {
+    margin: 20px;
+    font-size: 20px;
+}
+
+.dicePics {
+    margin: 30px;
+}
+
+.dice {
+    display: inline-block;
+}
+
 .actionButton {
     width: 100px;
     height: 40px;
-    background-color: red;
+    background-color: blue;
+    color: white;
 }
